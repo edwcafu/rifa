@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gran Rifa</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f7cf19;
+    padding:20px;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    background:#f7cf19;
+}
+
+.banner{
+    background:#000;
+    color:#fff;
+    text-align:center;
+    padding:30px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.banner h1{
+    font-size:4rem;
+    font-weight:900;
+}
+
+.content{
+    display:grid;
+    grid-template-columns: 35% 65%;
+    gap:20px;
+}
+
+.info{
+    padding:20px;
+}
+
+.precio{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.precio span{
+    font-size:2rem;
+}
+
+.valor{
+    background:#000;
+    color:#fff;
+    padding:15px 25px;
+    font-size:2.5rem;
+    font-weight:bold;
+}
+
+.premio{
+    background:#fff;
+    padding:25px;
+    border-top:10px solid #000;
+    font-size:1.8rem;
+    line-height:1.4;
+    margin-bottom:20px;
+}
+
+.fundacion{
+    background:#000;
+    color:#fff;
+    padding:10px;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.contacto h3{
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.contacto p{
+    font-size:1.5rem;
+    font-weight:bold;
+}
+
+.numeros{
+    display:grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap:3px;
+}
+
+.numero{
+    background:#fff;
+    border:1px solid #ccc;
+    text-align:center;
+    padding:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.numero:hover{
+    background:#ffe680;
+}
+
+.numero.vendido{
+    background:#000;
+    color:#fff;
+    font-weight:bold;
+}
+
+@media(max-width:900px){
+
+    .content{
+        grid-template-columns:1fr;
+    }
+
+    .banner h1{
+        font-size:2.5rem;
+    }
+
+    .numeros{
+        grid-template-columns:repeat(5,1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="banner">
+        <h1>¡GRAN RIFA!</h1>
+    </div>
+
+    <div class="content">
+
+        <div class="info">
+
+            <div class="precio">
+                <span>Precio por boleto:</span>
+                <div class="valor">$30.000</div>
+            </div>
+
+            <div class="premio">
+                Gana un viaje con todo pago a la gran isla Vibras para dos personas.
+                <br><br>
+                ¡Se sorteará el día 30/01/2026 en la noche!
+            </div>
+
+            <div class="fundacion">
+                Todo lo recaudado irá a la fundación Fauget
+            </div>
+
+            <div class="contacto">
+                <h3>Comunícate para comprar:</h3>
+                <p>(55) 1234-5678</p>
+                <p>@sitioincreible</p>
+            </div>
+
+        </div>
+
+        <div id="numeros" class="numeros"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+const contenedor = document.getElementById("numeros");
+
+// Ejemplo de números vendidos
+const vendidos = [
+    16, 25, 41, 51, 76, 155, 200, 234, 278, 300
+];
+
+for(let i = 1; i <= 300; i++){
+
+    const div = document.createElement("div");
+
+    div.classList.add("numero");
+
+    if(vendidos.includes(i)){
+        div.classList.add("vendido");
+    }
+
+    div.textContent = String(i).padStart(3,"0");
+
+    div.addEventListener("click", ()=>{
+
+        if(div.classList.contains("vendido")){
+            alert("Este número ya fue vendido.");
+            return;
+        }
+
+        alert("Seleccionaste el número " + String(i).padStart(3,"0"));
+    });
+
+    contenedor.appendChild(div);
+}
+
+</script>
+
+</body>
+</html>
