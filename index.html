@@ -1,11 +1,14 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Gran Rifa de Amor y Amistad</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -21,7 +24,6 @@ body{
 .container{
     max-width:1400px;
     margin:auto;
-    background:#f7cf19;
 }
 
 .banner{
@@ -34,13 +36,18 @@ body{
 }
 
 .banner h1{
-    font-size:4rem;
+    font-size:clamp(2rem,8vw,4rem);
     font-weight:900;
+}
+
+.banner p{
+    margin-top:10px;
+    font-size:clamp(1rem,3vw,1.5rem);
 }
 
 .content{
     display:grid;
-    grid-template-columns: 35% 65%;
+    grid-template-columns:minmax(280px,350px) 1fr;
     gap:20px;
 }
 
@@ -50,89 +57,133 @@ body{
 
 .precio{
     display:flex;
+    flex-wrap:wrap;
     align-items:center;
     gap:15px;
     margin-bottom:20px;
 }
 
 .precio span{
-    font-size:2rem;
+    font-size:clamp(1.2rem,4vw,2rem);
 }
 
 .valor{
     background:#000;
     color:#fff;
-    padding:15px 25px;
-    font-size:2.5rem;
+    padding:12px 20px;
+    font-size:clamp(1.5rem,5vw,2.5rem);
     font-weight:bold;
+    border-radius:5px;
 }
 
 .premio{
     background:#fff;
     padding:25px;
     border-top:10px solid #000;
-    font-size:1.8rem;
-    line-height:1.4;
+    font-size:clamp(1rem,3vw,1.4rem);
+    line-height:1.5;
     margin-bottom:20px;
 }
 
 .fundacion{
     background:#000;
     color:#fff;
-    padding:10px;
+    padding:15px;
     text-align:center;
     margin-bottom:30px;
+    border-radius:5px;
+    line-height:1.5;
 }
 
-.contacto h3{
-    font-size:2rem;
+.fundacion a{
+    color:#ffd700;
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+.fundacion a:hover{
+    color:#ffffff;
+}
+
+.contacto h2{
     margin-bottom:10px;
 }
 
 .contacto p{
-    font-size:1.3rem;
+    font-size:1.2rem;
     font-weight:bold;
+    margin-bottom:5px;
 }
 
 .numeros{
     display:grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap:3px;
+    grid-template-columns:repeat(auto-fit,minmax(60px,1fr));
+    gap:4px;
 }
 
 .numero{
     background:#fff;
     border:1px solid #ccc;
     text-align:center;
-    padding:8px;
+    padding:12px 5px;
     cursor:pointer;
     transition:.2s;
+    border-radius:5px;
+    font-weight:bold;
 }
 
 .numero:hover{
     background:#ffe680;
+    transform:scale(1.03);
 }
 
 .numero.vendido{
     background:#000;
     color:#fff;
-    font-weight:bold;
 }
 
 @media(max-width:900px){
+
+    body{
+        padding:10px;
+    }
 
     .content{
         grid-template-columns:1fr;
     }
 
-    .banner h1{
-        font-size:2.5rem;
+    .info{
+        padding:10px;
+    }
+
+    .precio{
+        justify-content:center;
+        text-align:center;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .banner{
+        padding:20px;
     }
 
     .numeros{
-        grid-template-columns:repeat(5,1fr);
+        grid-template-columns:repeat(4,1fr);
     }
+
+    .precio{
+        flex-direction:column;
+    }
+
+    .valor{
+        width:100%;
+        text-align:center;
+    }
+
 }
+
 </style>
 </head>
 
@@ -142,7 +193,7 @@ body{
 
     <div class="banner">
         <h1>¡GRAN RIFA DE AMOR Y AMISTAD!</h1>
-        <p>RIFA 2.000.000 - 3 OPORTUNIDADES DE GANAR</p>
+        <p>RIFA DE $2.000.000 - 3 OPORTUNIDADES DE GANAR</p>
     </div>
 
     <div class="content">
@@ -161,13 +212,19 @@ body{
             </div>
 
             <div class="fundacion">
-                Verifica en el PDF oficial los 3 numeros de cada voleta. Al comprar, recibirás tu boleta digital con toda la información.
+                Verifica en el
+                <a href="TU_LINK_DEL_PDF_AQUI" target="_blank">
+                    PDF oficial
+                </a>
+                los 3 números de cada boleta.
+                <br><br>
+                Al comprar, recibirás tu boleta digital con toda la información.
             </div>
 
             <div class="contacto">
                 <h2>Organiza: Deysi M Rivera V</h2>
-                <p>3193312091| llave: @3193312091</p>
-                <p></p>
+                <p>📱 3193312091</p>
+                <p>🔑 Llave: @3193312091</p>
             </div>
 
         </div>
@@ -182,9 +239,11 @@ body{
 
 const contenedor = document.getElementById("numeros");
 
-// Ejemplo de números vendidos
+// Números vendidos
 const vendidos = [
-    16, 28,87
+    16,
+    28,
+    87
 ];
 
 for(let i = 1; i <= 300; i++){
@@ -206,13 +265,16 @@ for(let i = 1; i <= 300; i++){
             return;
         }
 
-        alert("Seleccionaste el número " + String(i).padStart(3,"0"));
+        alert("Número disponible: " + String(i).padStart(3,"0"));
+
     });
 
     contenedor.appendChild(div);
+
 }
 
 </script>
 
 </body>
 </html>
+```
