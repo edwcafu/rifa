@@ -347,6 +347,8 @@ fetch(URL_VENDIDOS)
         div.textContent = String(i).padStart(3,"0");
 
         div.addEventListener("click", ()=>{
+            document.getElementById("resultadoBusqueda").innerHTML = "";
+            document.getElementById("buscarNumero").value = "";
 
             if(div.classList.contains("vendido")){
                 alert("Esta boleta ya fue vendida.");
