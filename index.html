@@ -223,6 +223,20 @@ body{
                 <span>Precio por boleto:</span>
                 <div class="valor">$30.000</div>
             </div>
+            <div style="margin:20px;text-align:center;">
+
+    <input
+        id="buscarNumero"
+        placeholder="Buscar número favorito (ej: 889)"
+        style="padding:10px;width:250px;">
+
+    <button onclick="buscarNumero()">
+        Buscar
+    </button>
+
+    <div id="resultadoBusqueda" style="margin-top:15px;"></div>
+
+</div>
 
             <div class="premio">
                 Cada boleta tiene asignados 3 números aleatorios, lo que te da 3 oportunidades de ganar.
@@ -269,6 +283,22 @@ const contenedor = document.getElementById("numeros");
 
 const SHEET_ID = "1sAvR6p_ExRghhzBMOU6ipysLXYZIa_SU6IcvFIm4eCs";
 const URL = `https://opensheet.elk.sh/${SHEET_ID}/Vendidos`;
+const SHEET_ID = "1fnuPIRoP-CJaD8OSTYV9Hk-5j289jxO-";
+
+const URL_ASIGNACIONES =
+`https://opensheet.elk.sh/${SHEET_ID}/Rifa%20300%20Boletas`;
+
+let asignaciones = [];    
+
+fetch(URL_ASIGNACIONES)
+.then(res => res.json())
+.then(data => {
+
+    asignaciones = data;
+
+    console.log("Asignaciones cargadas:", asignaciones);
+
+});
 
 fetch(URL)
 .then(res => res.json())
@@ -297,7 +327,25 @@ fetch(URL)
                 return;
             }
 
-            alert("Número disponible: " + String(i).padStart(3,"0")+ ". Para adquirirlo comunícate con el responsable de la rifa.");
+            const boleta = asignaciones.find(
+    x => Number(x["# Boleta"]) === i
+);
+
+if(boleta){
+
+    alert(
+
+`🎟️ Boleta ${boleta["# Boleta"]}
+
+1️⃣ ${boleta["Opt 1"]}
+
+2️⃣ ${boleta["Opt 2"]}
+
+3️⃣ ${boleta["Opt 3"]}`
+
+    );
+
+}
 
         });
 
@@ -309,6 +357,55 @@ fetch(URL)
 .catch(error => {
     console.error("Error cargando Google Sheets:", error);
 });
+    function buscarNumero(){
+
+    const numero =
+        document.getElementById("buscarNumero")
+        .value
+        .trim()
+        .padStart(3,"0");
+
+    const encontrado = asignaciones.find(x =>
+
+        x["Opt 1"] === numero ||
+        x["Opt 2"] === numero ||
+        x["Opt 3"] === numero
+
+    );
+
+    const resultado =
+        document.getElementById("resultadoBusqueda");
+
+    if(encontrado){
+
+        resultado.innerHTML = `
+            <div class="premio">
+
+                🎟️ Boleta ${encontrado["# Boleta"]}
+
+                <br><br>
+
+                1️⃣ ${encontrado["Opt 1"]}
+
+                <br>
+
+                2️⃣ ${encontrado["Opt 2"]}
+
+                <br>
+
+                3️⃣ ${encontrado["Opt 3"]}
+
+            </div>
+        `;
+
+    }else{
+
+        resultado.innerHTML =
+            "❌ Número no encontrado";
+
+    }
+
+}
 
 </script>
 
