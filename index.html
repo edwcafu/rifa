@@ -227,9 +227,9 @@ text-align:center;
 
 <p style="font-size:20px;">🎯 Tus 3 oportunidades</p>
 
-<h3 id="op 1"></h3>
-<h3 id="op 2"></h3>
-<h3 id="op 3"></h3>
+<h3 id="op1"></h3>
+<h3 id="op2"></h3>
+<h3 id="op3"></h3>
 
 <br>
 
@@ -435,9 +435,9 @@ fetch(URL_VENDIDOS)
 
             abrirModal(
     boleta["# Boleta"] || boleta["Boleta"],
-    boleta["Opt 1"],
-    boleta["Opt 2"],
-    boleta["Opt 3"]
+    boleta["Opt1"],
+    boleta["Opt2"],
+    boleta["Opt3"]
 );
 
         });
@@ -498,9 +498,9 @@ function cerrarModal(){
 
     const encontrado = asignaciones.find(x =>
 
-        String(x["Opt 1"]).padStart(3,"0") === numero ||
-        String(x["Opt 2"]).padStart(3,"0") === numero ||
-        String(x["Opt 3"]).padStart(3,"0") === numero
+        String(x["Opt1"]).padStart(3,"0") === numero ||
+        String(x["Opt2"]).padStart(3,"0") === numero ||
+        String(x["Opt3"]).padStart(3,"0") === numero
 
     );
 
