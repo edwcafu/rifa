@@ -251,37 +251,48 @@ body{
 
 const contenedor = document.getElementById("numeros");
 
-// Números vendidos
-const vendidos = [
-    16,28,87,19,41,42,49,52,249,255,256
-];
+const SHEET_ID = "1sAvR6p_ExRghhzBMOU6ipysLXYZIa_SU6IcvFIm4eCs";
+const URL = `https://opensheet.elk.sh/${SHEET_ID}/Vendidos`;
 
-for(let i = 1; i <= 300; i++){
+fetch(URL)
+.then(res => res.json())
+.then(data => {
 
-    const div = document.createElement("div");
+    const vendidos = data
+        .map(fila => Number(Object.values(fila)[0]))
+        .filter(n => !isNaN(n));
 
-    div.classList.add("numero");
+    for(let i = 1; i <= 300; i++){
 
-    if(vendidos.includes(i)){
-        div.classList.add("vendido");
-    }
+        const div = document.createElement("div");
 
-    div.textContent = String(i).padStart(3,"0");
+        div.classList.add("numero");
 
-    div.addEventListener("click", ()=>{
-
-        if(div.classList.contains("vendido")){
-            alert("Este número ya fue vendido.");
-            return;
+        if(vendidos.includes(i)){
+            div.classList.add("vendido");
         }
 
-        alert("Número disponible: " + String(i).padStart(3,"0"));
+        div.textContent = String(i).padStart(3,"0");
 
-    });
+        div.addEventListener("click", ()=>{
 
-    contenedor.appendChild(div);
+            if(div.classList.contains("vendido")){
+                alert("Este número ya fue vendido.");
+                return;
+            }
 
-}
+            alert("Número disponible: " + String(i).padStart(3,"0"));
+
+        });
+
+        contenedor.appendChild(div);
+
+    }
+
+})
+.catch(error => {
+    console.error("Error cargando Google Sheets:", error);
+});
 
 </script>
 
