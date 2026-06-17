@@ -498,11 +498,11 @@ function cerrarModal(){
 
     const encontrado = asignaciones.find(x =>
 
-        String(x["Opt 1"]).padStart(3,"0") === numero ||
-        String(x["Opt 2"]).padStart(3,"0") === numero ||
-        String(x["Opt 3"]).padStart(3,"0") === numero
+    Number(x["Opt 1"]) === Number(numero) ||
+    Number(x["Opt 2"]) === Number(numero) ||
+    Number(x["Opt 3"]) === Number(numero)
 
-    );
+);
 
     if(encontrado){
 
