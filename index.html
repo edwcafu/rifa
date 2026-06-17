@@ -1,301 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Gran Rifa de Amor y Amistad</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body{
-    background:#f7cf19;
-    padding:20px;
-}
-
-.container{
-    max-width:1400px;
-    margin:auto;
-}
-
-.banner{
-    background:#000;
-    color:#fff;
-    text-align:center;
-    padding:30px;
-    border-radius:10px;
-    margin-bottom:20px;
-}
-
-.banner h1{
-    font-size:clamp(2rem,8vw,4rem);
-    font-weight:900;
-}
-
-.banner p{
-    margin-top:10px;
-    font-size:clamp(1rem,3vw,1.5rem);
-}
-
-.content{
-    display:grid;
-    grid-template-columns:minmax(280px,350px) 1fr;
-    gap:20px;
-}
-
-.info{
-    padding:20px;
-}
-
-.precio{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:15px;
-    margin-bottom:20px;
-}
-
-.precio span{
-    font-size:clamp(1.2rem,4vw,2rem);
-}
-
-.valor{
-    background:#000;
-    color:#fff;
-    padding:12px 20px;
-    font-size:clamp(1.5rem,5vw,2.5rem);
-    font-weight:bold;
-    border-radius:5px;
-}
-
-.premio{
-    background:#fff;
-    padding:25px;
-    border-top:10px solid #000;
-    font-size:clamp(1rem,3vw,1.4rem);
-    line-height:1.5;
-    margin-bottom:20px;
-}
-
-.fundacion{
-    background:#000;
-    color:#fff;
-    padding:15px;
-    text-align:center;
-    margin-bottom:30px;
-    border-radius:5px;
-    line-height:1.5;
-}
-
-.fundacion a{
-    color:#ffd700;
-    font-weight:bold;
-    text-decoration:underline;
-}
-
-.fundacion a:hover{
-    color:#ffffff;
-}
-
-.contacto h2{
-    margin-bottom:10px;
-    font-size:1.4rem;
-}
-
-.contacto p{
-    font-size:1.2rem;
-    font-weight:bold;
-    margin-bottom:5px;
-}
-
-.numeros{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(60px,1fr));
-    gap:4px;
-}
-
-.numero{
-    background:#fff;
-    border:1px solid #ccc;
-    text-align:center;
-    padding:12px 5px;
-    cursor:pointer;
-    transition:.2s;
-    border-radius:5px;
-    font-weight:bold;
-}
-
-.numero:hover{
-    background:#ffe680;
-    transform:scale(1.03);
-}
-
-.numero.vendido{
-    background:#000;
-    color:#fff;
-}
-
-@media(max-width:900px){
-
-    body{
-        padding:10px;
-    }
-
-    .content{
-        grid-template-columns:1fr;
-    }
-
-    .info{
-        padding:10px;
-    }
-
-    .precio{
-        justify-content:center;
-        text-align:center;
-    }
-
-}
-
-@media(max-width:480px){
-
-    .banner{
-        padding:20px;
-    }
-
-    .numeros{
-        grid-template-columns:repeat(4,1fr);
-    }
-
-    .precio{
-        flex-direction:column;
-    }
-
-    .valor{
-        width:100%;
-        text-align:center;
-    }
-    .ocupado{ background:#000; 
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gran Rifa de Amor y Amistad</title>
+    <style>
+        *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif; } body{ background:#f7cf19; padding:20px; } .container{ max-width:1400px; margin:auto; } .banner{ background:#000; color:#fff; text-align:center; padding:30px; border-radius:10px; margin-bottom:20px; } .banner h1{ font-size:clamp(2rem,8vw,4rem); font-weight:900; } .banner p{ margin-top:10px; font-size:clamp(1rem,3vw,1.5rem); } .content{ display:grid; grid-template-columns:minmax(280px,350px) 1fr; gap:20px; } .info{ padding:20px; } .precio{ display:flex; flex-wrap:wrap; align-items:center; gap:15px; margin-bottom:20px; } .precio span{ font-size:clamp(1.2rem,4vw,2rem); } .valor{ background:#000; color:#fff; padding:12px 20px; font-size:clamp(1.5rem,5vw,2.5rem); font-weight:bold; border-radius:5px; } .premio{ background:#fff; padding:25px; border-top:10px solid #000; font-size:clamp(1rem,3vw,1.4rem); line-height:1.5; margin-bottom:20px; } .fundacion{ background:#000; color:#fff; padding:15px; text-align:center; margin-bottom:30px; border-radius:5px; line-height:1.5; } .fundacion a{ color:#ffd700; font-weight:bold; text-decoration:underline; } .fundacion a:hover{ color:#ffffff; } .contacto h2{ margin-bottom:10px; font-size:1.4rem; } .contacto p{ font-size:1.2rem; font-weight:bold; margin-bottom:5px; } .numeros{ display:grid; grid-template-columns:repeat(auto-fit,minmax(60px,1fr)); gap:4px; } .numero{ background:#fff; border:1px solid #ccc; text-align:center; padding:12px 5px; cursor:pointer; transition:.2s; border-radius:5px; font-weight:bold; } .numero:hover{ background:#ffe680; transform:scale(1.03); } .numero.vendido{ background:#000; color:#fff; } @media(max-width:900px){ body{ padding:10px; } .content{ grid-template-columns:1fr; } .info{ padding:10px; } .precio{ justify-content:center; text-align:center; } } @media(max-width:480px){ .banner{ padding:20px; } .numeros{ grid-template-columns:repeat(4,1fr); } .precio{ flex-direction:column; } .valor{ width:100%; text-align:center; } }
+    </style>
 </head>
 
 <body>
-
-<div class="container">
-
-    <div class="banner">
-        <h1>¡GRAN RIFA DE AMOR Y AMISTAD!</h1>       
-        <p style="color:#F7CF19; font-weight:bold;">
-    RIFA DE $2.000.000 - 3 OPORTUNIDADES DE GANAR
-</p>
-    </div>
-
-    <div class="content">
-
-        <div class="info">
-
-            <div class="precio">
-                <span>Precio por boleto:</span>
-                <div class="valor">$30.000</div>
-            </div>
-
-            <div class="premio">
-                Cada boleta tiene asignados 3 números aleatorios, lo que te da 3 oportunidades de ganar.
-                <br><br>
-                ¡Ganas si cualquiera de los 3 números de tu boleta coincide con las últimas 3 cifras del Premio Mayor de la Lotería de Boyacá!
-                <br><br>
-               📅 ¡Se sorteará el día 19/09/2026!
-            </div>
-
-            <div class="fundacion">
-                🔒 Consulta la asignación oficial de números en el
-                <a href="https://docs.google.com/spreadsheets/d/1fnuPIRoP-CJaD8OSTYV9Hk-5j289jxO-/edit?gid=1624634095#gid=1624634095" target="_blank">
-                    PDF adjunto.
-                </a>
-                <br><br>
-                Al comprar, recibirás tu boleta digital con la información.
-            </div>
-
-            <div class="contacto">
-                <h2>Organiza: Deysi M Rivera V</h2>
-                <p>📱 3193312091</p>
-                <p>🔑 Llave: @3193312091</p>
-            </div>
-
+    <div class="container">
+        <div class="banner">
+            <h1>¡GRAN RIFA DE AMOR Y AMISTAD!</h1>
+            <p style="color:#F7CF19; font-weight:bold;"> RIFA DE $2.000.000 - 3 OPORTUNIDADES DE GANAR </p>
         </div>
-
-        
-<div class="leyenda">
-
-    <div class="item-leyenda">
-        <div class="cuadro disponible"></div>
-        <span>Disponible</span>
+        <div class="content">
+            <div class="info">
+                <div class="precio"> <span>Precio por boleto:</span>
+                    <div class="valor">$30.000</div>
+                </div>
+                <div class="premio"> Cada boleta tiene asignados 3 números aleatorios, lo que te da 3 oportunidades de ganar.
+                    <br>
+                    <br> ¡Ganas si cualquiera de los 3 números de tu boleta coincide con las últimas 3 cifras del Premio Mayor de la Lotería de Boyacá!
+                    <br>
+                    <br> 📅 ¡Se sorteará el día 19/09/2026! </div>
+                <div class="fundacion"> 🔒 Consulta la asignación oficial de números en el <a href="https://docs.google.com/spreadsheets/d/1fnuPIRoP-CJaD8OSTYV9Hk-5j289jxO-/edit?gid=1624634095#gid=1624634095" target="_blank"> PDF adjunto. </a>
+                    <br>
+                    <br> Al comprar, recibirás tu boleta digital con la información. </div>
+                <div class="contacto">
+                    <h2>Organiza: Deysi M Rivera V</h2>
+                    <p>📱 3193312091</p>
+                    <p>🔑 Llave: @3193312091</p>
+                </div>
+            </div>
+            <div id="numeros" class="numeros"></div>
+        </div>
     </div>
-
-    <div class="item-leyenda">
-        <div class="cuadro ocupado"></div>
-        <span>Ocupado</span>
-    </div>
-
-</div>
-
-<div id="numeros" class="numeros"></div>
-
-
-
-    </div>
-
-</div>
-
-<script>
-
-const contenedor = document.getElementById("numeros");
-
-// Números vendidos
-const vendidos = [
-    16,
-    28,
-    87
-];
-
-for(let i = 1; i <= 300; i++){
-
-    const div = document.createElement("div");
-
-    div.classList.add("numero");
-
-    if(vendidos.includes(i)){
-        div.classList.add("vendido");
-    }
-
-    div.textContent = String(i).padStart(3,"0");
-
-    div.addEventListener("click", ()=>{
-
-        if(div.classList.contains("vendido")){
-            alert("Este número ya fue vendido.");
-            return;
-        }
-
-        alert("Número disponible: " + String(i).padStart(3,"0"));
-
-    });
-
-    contenedor.appendChild(div);
-
-}
-
-</script>
-
+    <script>
+        const contenedor = document.getElementById("numeros"); // Números vendidos const vendidos = [ 16, 28, 87 ]; for(let i = 1; i <= 300; i++){ const div = document.createElement("div"); div.classList.add("numero"); if(vendidos.includes(i)){ div.classList.add("vendido"); } div.textContent = String(i).padStart(3,"0"); div.addEventListener("click", ()=>{ if(div.classList.contains("vendido")){ alert("Este número ya fue vendido."); return; } alert("Número disponible: " + String(i).padStart(3,"0")); }); contenedor.appendChild(div); }
+    </script>
 </body>
-</html>
 
+</html>
