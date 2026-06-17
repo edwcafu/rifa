@@ -203,7 +203,62 @@ body{
 
 </style>
 </head>
+<div id="modalBoleta" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+z-index:9999;
+">
 
+<div style="
+background:white;
+max-width:400px;
+margin:100px auto;
+padding:25px;
+border-radius:10px;
+text-align:center;
+">
+
+<h2 id="tituloBoleta"></h2>
+
+<p style="font-size:20px;">🎯 Tus 3 oportunidades</p>
+
+<h3 id="op 1"></h3>
+<h3 id="op 2"></h3>
+<h3 id="op 3"></h3>
+
+<br>
+
+<a
+id="btnWhatsapp"
+target="_blank"
+style="
+background:#25D366;
+color:white;
+padding:12px 20px;
+text-decoration:none;
+border-radius:5px;
+display:inline-block;
+">
+Reservar por WhatsApp
+</a>
+
+<br><br>
+
+<button onclick="cerrarModal()">
+Cerrar
+</button>
+
+</div>
+
+</div>
+
+
+    
 <body>
 
 <div class="container">
@@ -378,17 +433,12 @@ fetch(URL_VENDIDOS)
 
             }
 
-            alert(
-
-`🎟️ BOLETA ${boleta["# Boleta"] || boleta["Boleta"]}
-
-1️⃣ ${boleta["Opt 1"]}
-
-2️⃣ ${boleta["Opt 2"]}
-
-3️⃣ ${boleta["Opt 3"]}`
-
-            );
+            abrirModal(
+    boleta["# Boleta"] || boleta["Boleta"],
+    boleta["Opt 1"],
+    boleta["Opt 2"],
+    boleta["Opt 3"]
+);
 
         });
 
@@ -406,8 +456,36 @@ fetch(URL_VENDIDOS)
 /* ==========================
    BUSCAR NÚMERO FAVORITO
 ========================== */
+function abrirModal(boleta,opt1,opt2,opt3){
 
-function buscarNumero(){
+    document.getElementById("tituloBoleta").innerHTML =
+        "🎟️ Boleta " + boleta;
+
+    document.getElementById("op1").innerHTML =
+        "1️⃣ " + opt1;
+
+    document.getElementById("op2").innerHTML =
+        "2️⃣ " + opt2;
+
+    document.getElementById("op3").innerHTML =
+        "3️⃣ " + opt3;
+
+    document.getElementById("btnWhatsapp").href =
+        "https://wa.me/573193312091?text=Hola,%20quiero%20reservar%20la%20boleta%20" + boleta;
+
+    document.getElementById("modalBoleta").style.display =
+        "block";
+}
+
+function cerrarModal(){
+
+    document.getElementById("modalBoleta").style.display =
+        "none";
+
+}
+
+    
+    function buscarNumero(){
 
     const numero = document
         .getElementById("buscarNumero")
