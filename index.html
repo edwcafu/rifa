@@ -286,15 +286,17 @@ Cerrar
     
 
             <div class="premio">
-                🎟️ Escoge tu número de boleta del 001 al 300.
-                <br><br>
-                🍀 Cada boleta tiene asignados 3 números aleatorios, lo que te da 3 oportunidades de gana
-                <br><br>
-                📌 El número de la boleta es únicamente un identificador y no participa en el sorteo
-                <br><br>
-                🏆 Ganas si cualquiera de los 3 números asignados a tu boleta coincide con las últimas 3 cifras del Premio Mayor de la Lotería de Boyacá
-                <br><br>
-                📅 Sorteo: 19/09/2026.
+                    🎟️ Escoge tu casillero favorito del 001 al 300.
+                    <br><br>
+                    🍀 Cada casillero tiene asignados 3 números aleatorios, lo que te brinda 3 oportunidades de ganar.
+                    <br><br>
+                    📌 El número del casillero es únicamente un identificador y no participa directamente en el sorteo.
+                    <br><br>
+                    🏆 Ganas si cualquiera de los 3 números asignados a tu casillero coincide con las últimas 3 cifras del Premio Mayor de la Lotería de Boyacá.
+                    <br><br>
+                    💰 Valor por casillero: $30.000
+                    <br><br>
+                    📅 Sorteo: 19/09/2026.
                 
             </div>
 
@@ -333,7 +335,7 @@ Cerrar
     </div>
 
              <div class="reserva">
-                <span>🎟️ Haz clic en cualquier boleta para conocer sus 3 números asignados y reservar.</span>
+                <span>🎟️ Haz clic en cualquier casillero para conocer sus 3 números asignados y reservarlo</span>
                 
             </div>
 
@@ -480,7 +482,7 @@ fetch(URL_VENDIDOS)
 function abrirModal(boleta,opt1,opt2,opt3){
 
     document.getElementById("tituloBoleta").innerHTML =
-        "🎟️ Número de Boleta " + boleta;
+        "🎟️ Número de Casillero " + boleta;
 
     document.getElementById("op1").innerHTML =
         "1️⃣ " + opt1;
@@ -531,7 +533,7 @@ function cerrarModal(){
 
         <div class="premio">
 
-            <strong>🎟️ Boleta:</strong>
+            <strong>🎟️ Número de casillero:</strong>
             ${encontrado["# Boleta"] || encontrado["Boleta"]}
 
             <br><br>
