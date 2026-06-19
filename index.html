@@ -591,8 +591,6 @@ fetch(URL_VENDIDOS)
 
 function abrirModal(boleta,opt1,opt2,opt3){
 
-    document.getElementById("nombreParticipante").innerHTML =
-        "👤 PRUEBA";
     document.getElementById("tituloBoleta").innerHTML =
         "🎟️ Número de Puesto " + String(boleta).padStart(3,"0");
 
@@ -632,6 +630,9 @@ function cerrarModal(){
 
 function abrirModalVendido(boleta,opt1,opt2,opt3){
 
+        document.getElementById("nombreParticipante").innerHTML =
+        "👤 PRUEBA";
+    
     document.getElementById("tituloVendido").innerHTML =
         "🎟️ Número de Puesto " + String(boleta).padStart(3,"0");
 
