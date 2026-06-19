@@ -348,9 +348,9 @@ body{
 
     <div class="modal-contenido">
 
-        <div class="estado-vendido">
-            VENDIDA
-        </div>
+<div id="estadoBoleta" class="estado-vendido">
+    VENDIDA
+</div>
             <div id="nombreParticipante"
                 style="
                 margin:10px 0;
@@ -569,7 +569,8 @@ fetch(URL_VENDIDOS)
         boleta["Opt 1"],
         boleta["Opt 2"],
         boleta["Opt 3"],
-        participante
+        participante,
+        pago
     );
 
     return;
@@ -642,6 +643,19 @@ function abrirModalVendido(boleta,opt1,opt2,opt3,participante){
 
         document.getElementById("nombreParticipante").innerHTML =
         "👤 " + participante;
+    const estado = document.getElementById("estadoBoleta");
+
+if(String(pago).toLowerCase() === "si"){
+
+    estado.innerHTML = "PAGADA";
+    estado.style.background = "#0d47a1";
+
+}else{
+
+    estado.innerHTML = "RESERVADA";
+    estado.style.background = "#ff9800";
+
+}
     
     document.getElementById("tituloVendido").innerHTML =
         "🎟️ Número de Puesto " + String(boleta).padStart(3,"0");
