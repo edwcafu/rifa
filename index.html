@@ -483,6 +483,7 @@ const URL_ASIGNACIONES =
 `https://opensheet.elk.sh/${SHEET_RIFA}/Boletas`;
 
 let asignaciones = [];
+let vendidosData = [];
 
 /* ==========================
    CARGAR ASIGNACIONES
@@ -511,7 +512,8 @@ fetch(URL_ASIGNACIONES)
 fetch(URL_VENDIDOS)
 .then(res => res.json())
 .then(data => {
-
+    
+    vendidosData =data;
     const vendidos = data
         .map(fila => Number(Object.values(fila)[0]))
         .filter(n => !isNaN(n));
@@ -555,15 +557,23 @@ fetch(URL_VENDIDOS)
 
             if(div.classList.contains("vendido")){
 
-                abrirModalVendido(
-                    boleta["# Boleta"] || boleta["Boleta"] || boleta["BOLETA"],
-                    boleta["Opt 1"],
-                    boleta["Opt 2"],
-                    boleta["Opt 3"]
-                );
+    const venta = vendidosData.find(f =>
+        Number(Object.values(f)[0]) === i
+    );
 
-                return;
-            }
+    const participante =
+        venta?.["Participantes"] || "Sin nombre";
+
+    abrirModalVendido(
+        boleta["# Boleta"] || boleta["Boleta"] || boleta["BOLETA"],
+        boleta["Opt 1"],
+        boleta["Opt 2"],
+        boleta["Opt 3"],
+        participante
+    );
+
+    return;
+}
 
             abrirModal(
                 boleta["# Boleta"] || boleta["Boleta"] || boleta["BOLETA"],
@@ -628,10 +638,10 @@ function cerrarModal(){
    MODAL BOLETA VENDIDA
 ========================== */
 
-function abrirModalVendido(boleta,opt1,opt2,opt3){
+function abrirModalVendido(boleta,opt1,opt2,opt3,participante){
 
         document.getElementById("nombreParticipante").innerHTML =
-        "👤 PRUEBA";
+        "👤 " + participante;
     
     document.getElementById("tituloVendido").innerHTML =
         "🎟️ Número de Puesto " + String(boleta).padStart(3,"0");
