@@ -184,11 +184,26 @@ body{
 
 .modal-contenido{
     background:white;
-    max-width:400px;
+    max-width:420px;
     margin:100px auto;
     padding:25px;
-    border-radius:10px;
+    border-radius:12px;
     text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.opcion-numero{
+    background:#f2f2f2;
+    margin:8px 0;
+    padding:12px;
+    border-radius:8px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.opcion-vendida{
+    background:#e8f0ff;
+    color:#0d47a1;
 }
 
 .btn-whatsapp{
@@ -219,6 +234,16 @@ body{
     border-radius:5px;
     cursor:pointer;
     font-weight:bold;
+}
+
+.estado-vendido{
+    background:#0d47a1;
+    color:white;
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:20px;
+    font-weight:bold;
+    margin-bottom:10px;
 }
 
 @media(max-width:900px){
@@ -264,7 +289,7 @@ body{
     }
 
     .modal-contenido{
-        margin:80px auto;
+        margin:70px auto;
     }
 
 }
@@ -292,9 +317,9 @@ body{
 
         <br>
 
-        <h3 id="op1"></h3>
-        <h3 id="op2"></h3>
-        <h3 id="op3"></h3>
+        <div id="op1" class="opcion-numero"></div>
+        <div id="op2" class="opcion-numero"></div>
+        <div id="op3" class="opcion-numero"></div>
 
         <br>
 
@@ -319,34 +344,31 @@ body{
      MODAL BOLETA VENDIDA
 ========================== -->
 
-<!-- ==========================
-     MODAL BOLETA VENDIDA
-========================== -->
-
 <div id="modalVendido" class="modal">
 
     <div class="modal-contenido">
 
-        <h2 style="color:#0d47a1;">
-            🎟️ Casillero vendido
-        </h2>
+        <div class="estado-vendido">
+            VENDIDA
+        </div>
+
+        <h2 id="tituloVendido" style="color:#0d47a1;"></h2>
 
         <br>
 
-        <p id="mensajeVendido" style="font-size:20px;font-weight:bold;">
-        </p>
+        <p id="mensajeVendido" style="font-size:18px;font-weight:bold;"></p>
 
         <br>
 
         <p style="font-size:20px;">
-            🎯 Números asignados
+            🎯 Tus 3 oportunidades
         </p>
 
         <br>
 
-        <h3 id="vendidoOp1"></h3>
-        <h3 id="vendidoOp2"></h3>
-        <h3 id="vendidoOp3"></h3>
+        <div id="vendidoOp1" class="opcion-numero opcion-vendida"></div>
+        <div id="vendidoOp2" class="opcion-numero opcion-vendida"></div>
+        <div id="vendidoOp3" class="opcion-numero opcion-vendida"></div>
 
         <br>
 
@@ -361,8 +383,6 @@ body{
         </button>
 
     </div>
-
-</div>
 
 </div>
 
@@ -481,7 +501,6 @@ fetch(URL_ASIGNACIONES)
 
     console.log("Asignaciones cargadas");
     console.log(asignaciones);
-    console.log(asignaciones[0]);
 
 })
 .catch(error => {
@@ -519,11 +538,6 @@ fetch(URL_VENDIDOS)
             document.getElementById("resultadoBusqueda").innerHTML = "";
             document.getElementById("buscarNumero").value = "";
 
-            if(div.classList.contains("vendido")){
-                abrirModalVendido(i);
-                return;
-            }
-
             const boleta = asignaciones.find(x => {
 
                 const numeroBoleta =
@@ -544,10 +558,20 @@ fetch(URL_VENDIDOS)
 
             }
 
-            console.log(boleta);
+            if(div.classList.contains("vendido")){
+
+                abrirModalVendido(
+                    boleta["# Boleta"] || boleta["Boleta"] || boleta["BOLETA"],
+                    boleta["Opt 1"],
+                    boleta["Opt 2"],
+                    boleta["Opt 3"]
+                );
+
+                return;
+            }
 
             abrirModal(
-                boleta["# Boleta"] || boleta["Boleta"],
+                boleta["# Boleta"] || boleta["Boleta"] || boleta["BOLETA"],
                 boleta["Opt 1"],
                 boleta["Opt 2"],
                 boleta["Opt 3"]
@@ -609,10 +633,22 @@ function cerrarModal(){
    MODAL BOLETA VENDIDA
 ========================== */
 
-function abrirModalVendido(numeroBoleta){
+function abrirModalVendido(boleta,opt1,opt2,opt3){
+
+    document.getElementById("tituloVendido").innerHTML =
+        "🎟️ Número de Casillero " + String(boleta).padStart(3,"0");
 
     document.getElementById("mensajeVendido").innerHTML =
-        "La boleta " + String(numeroBoleta).padStart(3,"0") + " ya se encuentra vendida.";
+        "La boleta " + String(boleta).padStart(3,"0") + " ya se encuentra vendida.";
+
+    document.getElementById("vendidoOp1").innerHTML =
+        "1️⃣ " + String(opt1).padStart(3,"0");
+
+    document.getElementById("vendidoOp2").innerHTML =
+        "2️⃣ " + String(opt2).padStart(3,"0");
+
+    document.getElementById("vendidoOp3").innerHTML =
+        "3️⃣ " + String(opt3).padStart(3,"0");
 
     document.getElementById("modalVendido").style.display =
         "block";
@@ -631,14 +667,28 @@ function cerrarModalVendido(){
 
 function buscarNumero(){
 
-    const numero = document
+    const input = document
         .getElementById("buscarNumero")
         .value
-        .trim()
-        .padStart(3,"0");
+        .trim();
 
     const resultado =
         document.getElementById("resultadoBusqueda");
+
+    if(input === "" || isNaN(Number(input))){
+
+        resultado.innerHTML = `
+
+        <div class="premio">
+            ⚠️ Ingresa un número válido.
+        </div>
+
+        `;
+
+        return;
+    }
+
+    const numero = input.padStart(3,"0");
 
     const encontrado = asignaciones.find(x =>
 
@@ -655,7 +705,7 @@ function buscarNumero(){
         <div class="premio">
 
             <strong>🎟️ Número de casillero:</strong>
-            ${String(encontrado["# Boleta"] || encontrado["Boleta"]).padStart(3,"0")}
+            ${String(encontrado["# Boleta"] || encontrado["Boleta"] || encontrado["BOLETA"]).padStart(3,"0")}
 
             <br><br>
 
