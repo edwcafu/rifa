@@ -184,30 +184,11 @@ body{
 
 .modal-contenido{
     background:white;
-    max-width:420px;
+    max-width:400px;
     margin:100px auto;
     padding:25px;
-    border-radius:12px;
+    border-radius:10px;
     text-align:center;
-    box-shadow:0 10px 25px rgba(0,0,0,.3);
-}
-
-.modal-contenido h2{
-    margin-bottom:10px;
-}
-
-.opcion-numero{
-    background:#f2f2f2;
-    margin:8px 0;
-    padding:10px;
-    border-radius:8px;
-    font-size:22px;
-    font-weight:bold;
-}
-
-.opcion-vendida{
-    background:#e8f0ff;
-    color:#0d47a1;
 }
 
 .btn-whatsapp{
@@ -222,3 +203,515 @@ body{
 
 .btn-cerrar{
     background:#000;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-cerrar-vendido{
+    background:#0d47a1;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+@media(max-width:900px){
+
+    body{
+        padding:10px;
+    }
+
+    .info{
+        padding:10px;
+    }
+
+    .precio{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .reserva{
+        justify-content:center;
+        text-align:center;
+        font-size:15px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .banner{
+        padding:20px;
+    }
+
+    .numeros{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .precio{
+        flex-direction:column;
+    }
+
+    .valor{
+        width:100%;
+        text-align:center;
+    }
+
+    .modal-contenido{
+        margin:80px auto;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ==========================
+     MODAL BOLETA DISPONIBLE
+========================== -->
+
+<div id="modalBoleta" class="modal">
+
+    <div class="modal-contenido">
+
+        <h2 id="tituloBoleta"></h2>
+
+        <br>
+
+        <p style="font-size:20px;">
+            🎯 Tus 3 oportunidades
+        </p>
+
+        <br>
+
+        <h3 id="op1"></h3>
+        <h3 id="op2"></h3>
+        <h3 id="op3"></h3>
+
+        <br>
+
+        <a
+            id="btnWhatsapp"
+            target="_blank"
+            class="btn-whatsapp">
+            Reservar por WhatsApp
+        </a>
+
+        <br><br>
+
+        <button onclick="cerrarModal()" class="btn-cerrar">
+            Cerrar
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ==========================
+     MODAL BOLETA VENDIDA
+========================== -->
+
+<!-- ==========================
+     MODAL BOLETA VENDIDA
+========================== -->
+
+<div id="modalVendido" class="modal">
+
+    <div class="modal-contenido">
+
+        <h2 style="color:#0d47a1;">
+            🎟️ Casillero vendido
+        </h2>
+
+        <br>
+
+        <p id="mensajeVendido" style="font-size:20px;font-weight:bold;">
+        </p>
+
+        <br>
+
+        <p style="font-size:20px;">
+            🎯 Números asignados
+        </p>
+
+        <br>
+
+        <h3 id="vendidoOp1"></h3>
+        <h3 id="vendidoOp2"></h3>
+        <h3 id="vendidoOp3"></h3>
+
+        <br>
+
+        <p style="font-size:16px;">
+            Esta boleta ya fue reservada o vendida.
+        </p>
+
+        <br>
+
+        <button onclick="cerrarModalVendido()" class="btn-cerrar-vendido">
+            Cerrar
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="container">
+
+    <div class="banner">
+        <h1>¡GRAN RIFA DE AMOR Y AMISTAD!</h1>       
+        <p style="color:#F7CF19; font-weight:bold;">
+            RIFA DE $2.000.000 - 3 OPORTUNIDADES DE GANAR
+        </p>
+    </div>
+
+    <div class="content">
+
+        <div class="info">
+
+            <div class="precio">
+                <span>Precio por boleto:</span>
+                <div class="valor">$30.000</div>
+            </div>
+    
+            <div class="premio">
+                🎟️ Escoge tu casillero favorito del 001 al 300.
+                <br><br>
+                🍀 Cada casillero tiene asignados 3 números aleatorios, lo que te brinda 3 oportunidades de ganar.
+                <br><br>
+                📌 El número del casillero es únicamente un identificador y no participa directamente en el sorteo.
+                <br><br>
+                🏆 Ganas si cualquiera de los 3 números asignados a tu casillero coincide con las últimas 3 cifras del Premio Mayor de la Lotería de Boyacá.
+                <br><br>
+                💰 Valor por casillero: $30.000
+                <br><br>
+                📅 Sorteo: 19/09/2026.
+            </div>
+
+            <div class="fundacion">
+                📲 Para reservar tu casillero, envía por WhatsApp la captura de pantalla del número elegido, tu nombre completo y tu número de cédula.
+                <br><br>
+                Una vez confirmado el pago, recibirás tu boleta digital con los 3 números asignados para el sorteo.
+            </div>
+
+            <div class="contacto">
+                <h2>Organiza: Deysi M Rivera V</h2>
+                <p>📱 3193312091</p>
+                <p>🔑 Llave: @3193312091</p>                
+            </div>
+
+            <div style="margin:20px;text-align:center;">
+
+                <input
+                    id="buscarNumero"
+                    placeholder="Número favorito 000-899"
+                    style="padding:10px;width:250px;">
+
+                <button onclick="buscarNumero()" style="padding:10px 15px; cursor:pointer;">
+                    Buscar
+                </button>
+
+            </div>
+
+            <div id="resultadoBusqueda" style="margin-top:20px;margin-bottom:20px;">
+            </div>
+
+            <div class="reserva">
+                <span>🎟️ Haz clic en cualquier casillero para conocer sus 3 números asignados y reservarlo</span>
+            </div>
+
+            <div id="numeros" class="numeros"></div>
+
+        </div>
+
+        <div class="fundacion">
+            🔒 Consulta la asignación oficial de números en el
+            <a href="https://docs.google.com/spreadsheets/d/1MUD5Qur0ILzjGsqQtMnv-41crwo7iue75de9NGns1Js/edit?gid=1624634095#gid=1624634095" target="_blank">
+                archivo adjunto.
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const contenedor = document.getElementById("numeros");
+
+/* ==========================
+   HOJA DE VENDIDOS
+========================== */
+
+const SHEET_VENDIDOS = "1sAvR6p_ExRghhzBMOU6ipysLXYZIa_SU6IcvFIm4eCs";
+
+const URL_VENDIDOS =
+`https://opensheet.elk.sh/${SHEET_VENDIDOS}/Vendidos`;
+
+/* ==========================
+   HOJA DE ASIGNACIONES
+========================== */
+
+const SHEET_RIFA = "1MUD5Qur0ILzjGsqQtMnv-41crwo7iue75de9NGns1Js";
+
+const URL_ASIGNACIONES =
+`https://opensheet.elk.sh/${SHEET_RIFA}/Boletas`;
+
+let asignaciones = [];
+
+/* ==========================
+   CARGAR ASIGNACIONES
+========================== */
+
+fetch(URL_ASIGNACIONES)
+.then(res => res.json())
+.then(data => {
+
+    asignaciones = data;
+
+    console.log("Asignaciones cargadas");
+    console.log(asignaciones);
+    console.log(asignaciones[0]);
+
+})
+.catch(error => {
+
+    console.error("Error cargando asignaciones:", error);
+
+});
+
+/* ==========================
+   CARGAR VENDIDOS
+========================== */
+
+fetch(URL_VENDIDOS)
+.then(res => res.json())
+.then(data => {
+
+    const vendidos = data
+        .map(fila => Number(Object.values(fila)[0]))
+        .filter(n => !isNaN(n));
+
+    for(let i = 1; i <= 300; i++){
+
+        const div = document.createElement("div");
+
+        div.classList.add("numero");
+
+        if(vendidos.includes(i)){
+            div.classList.add("vendido");
+        }
+
+        div.textContent = String(i).padStart(3,"0");
+
+        div.addEventListener("click", ()=>{
+
+            document.getElementById("resultadoBusqueda").innerHTML = "";
+            document.getElementById("buscarNumero").value = "";
+
+            if(div.classList.contains("vendido")){
+                abrirModalVendido(i);
+                return;
+            }
+
+            const boleta = asignaciones.find(x => {
+
+                const numeroBoleta =
+                    Number(
+                        x["# Boleta"] ||
+                        x["Boleta"] ||
+                        x["BOLETA"]
+                    );
+
+                return numeroBoleta === i;
+
+            });
+
+            if(!boleta){
+
+                alert("No fue posible encontrar la asignación de esta boleta.");
+                return;
+
+            }
+
+            console.log(boleta);
+
+            abrirModal(
+                boleta["# Boleta"] || boleta["Boleta"],
+                boleta["Opt 1"],
+                boleta["Opt 2"],
+                boleta["Opt 3"]
+            );
+
+        });
+
+        contenedor.appendChild(div);
+
+    }
+
+})
+.catch(error => {
+
+    console.error("Error cargando vendidos:", error);
+
+});
+
+/* ==========================
+   MODAL BOLETA DISPONIBLE
+========================== */
+
+function abrirModal(boleta,opt1,opt2,opt3){
+
+    document.getElementById("tituloBoleta").innerHTML =
+        "🎟️ Número de Casillero " + String(boleta).padStart(3,"0");
+
+    document.getElementById("op1").innerHTML =
+        "1️⃣ " + String(opt1).padStart(3,"0");
+
+    document.getElementById("op2").innerHTML =
+        "2️⃣ " + String(opt2).padStart(3,"0");
+
+    document.getElementById("op3").innerHTML =
+        "3️⃣ " + String(opt3).padStart(3,"0");
+
+    const mensajeWhatsapp =
+        "Hola, quiero reservar la boleta " + String(boleta).padStart(3,"0") +
+        " con los números asignados: " +
+        String(opt1).padStart(3,"0") + ", " +
+        String(opt2).padStart(3,"0") + " y " +
+        String(opt3).padStart(3,"0") + ".";
+
+    document.getElementById("btnWhatsapp").href =
+        "https://wa.me/573193312091?text=" + encodeURIComponent(mensajeWhatsapp);
+
+    document.getElementById("modalBoleta").style.display =
+        "block";
+}
+
+function cerrarModal(){
+
+    document.getElementById("modalBoleta").style.display =
+        "none";
+
+}
+
+/* ==========================
+   MODAL BOLETA VENDIDA
+========================== */
+
+function abrirModalVendido(numeroBoleta){
+
+    document.getElementById("mensajeVendido").innerHTML =
+        "La boleta " + String(numeroBoleta).padStart(3,"0") + " ya se encuentra vendida.";
+
+    document.getElementById("modalVendido").style.display =
+        "block";
+}
+
+function cerrarModalVendido(){
+
+    document.getElementById("modalVendido").style.display =
+        "none";
+
+}
+
+/* ==========================
+   BUSCAR NÚMERO FAVORITO
+========================== */
+
+function buscarNumero(){
+
+    const numero = document
+        .getElementById("buscarNumero")
+        .value
+        .trim()
+        .padStart(3,"0");
+
+    const resultado =
+        document.getElementById("resultadoBusqueda");
+
+    const encontrado = asignaciones.find(x =>
+
+        Number(x["Opt 1"]) === Number(numero) ||
+        Number(x["Opt 2"]) === Number(numero) ||
+        Number(x["Opt 3"]) === Number(numero)
+
+    );
+
+    if(encontrado){
+
+        resultado.innerHTML = `
+
+        <div class="premio">
+
+            <strong>🎟️ Número de casillero:</strong>
+            ${String(encontrado["# Boleta"] || encontrado["Boleta"]).padStart(3,"0")}
+
+            <br><br>
+
+            <strong>1️⃣</strong>
+            ${String(encontrado["Opt 1"]).padStart(3,"0")}
+
+            <br>
+
+            <strong>2️⃣</strong>
+            ${String(encontrado["Opt 2"]).padStart(3,"0")}
+
+            <br>
+
+            <strong>3️⃣</strong>
+            ${String(encontrado["Opt 3"]).padStart(3,"0")}
+
+        </div>
+
+        `;
+
+    }else{
+
+        resultado.innerHTML = `
+
+        <div class="premio">
+
+            ❌ Número no encontrado
+
+        </div>
+
+        `;
+
+    }
+
+}
+
+/* ==========================
+   CERRAR MODALES AL HACER CLIC FUERA
+========================== */
+
+window.onclick = function(event) {
+
+    const modalBoleta = document.getElementById("modalBoleta");
+    const modalVendido = document.getElementById("modalVendido");
+
+    if(event.target === modalBoleta){
+        cerrarModal();
+    }
+
+    if(event.target === modalVendido){
+        cerrarModalVendido();
+    }
+
+}
+
+</script>
+
+</body>
+</html>
