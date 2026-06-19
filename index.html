@@ -344,15 +344,20 @@ body{
      MODAL BOLETA VENDIDA
 ========================== -->
 
-<div id="modalVendido" class="modal">
+<div class="estado-vendido">
+    VENDIDA
+</div>
 
-    <div class="modal-contenido">
+<div id="nombreParticipante"
+     style="
+        margin:15px 0;
+        font-size:22px;
+        font-weight:bold;
+        color:#333;
+     ">
+</div>
 
-        <div class="estado-vendido">
-            VENDIDA
-        </div>
-
-        <h2 id="tituloVendido" style="color:#0d47a1;"></h2>
+<h2 id="tituloVendido" style="color:#0d47a1;"></h2>
 
         <br>
 
@@ -620,7 +625,13 @@ function cerrarModal(){
    MODAL BOLETA VENDIDA
 ========================== */
 
-function abrirModalVendido(boleta,opt1,opt2,opt3){
+function abrirModalVendido(boleta,opt1,opt2,opt3,Participantes){
+
+    document.getElementById("nombreParticipante").innerHTML =
+    "👤 " + Participantes;
+
+    document.getElementById("nombreParticipante").innerHTML =
+     "👤 " + participante;
 
     document.getElementById("tituloVendido").innerHTML =
         "🎟️ Número de Puesto " + String(boleta).padStart(3,"0");
