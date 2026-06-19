@@ -390,28 +390,25 @@ body{
         <div class="info">
 
             <div class="precio">
-                <span>Precio por boleto:</span>
+                <span>Precio por puesto:</span>
                 <div class="valor">$30.000</div>
             </div>
     
             <div class="premio">
-                🎟️ Escoge tu casillero favorito del 001 al 300.
+                🎟️ Escoge tu puesto del 001 al 300.
                 <br><br>
-                🍀 Cada casillero tiene asignados 3 números aleatorios, lo que te brinda 3 oportunidades de ganar.
+                🍀 Cada puesto tiene asignados 3 números aleatorios, lo que te brinda 3 oportunidades de ganar.
                 <br><br>
-                📌 El número del casillero es únicamente un identificador y no participa directamente en el sorteo.
+                📌 El número del puesto es únicamente un identificador y no participa directamente en el sorteo.
                 <br><br>
-                🏆 Ganas si cualquiera de los 3 números asignados a tu casillero coincide con las últimas 3 cifras del Premio Mayor de la Lotería de Boyacá.
-                <br><br>
-                💰 Valor por casillero: $30.000
-                <br><br>
+                🏆 Ganas si cualquiera de los 3 números asignados a tu puesto coincide con las últimas 3 cifras del Premio Mayor de la Lotería de Boyacá.
+                <br><br>             
                 📅 Sorteo: 19/09/2026.
             </div>
 
-            <div class="fundacion">
-                📲 Para reservar tu casillero, envía por WhatsApp la captura de pantalla del número elegido, tu nombre completo y tu número de cédula.
-                <br><br>
-                Una vez confirmado el pago, recibirás tu boleta digital con los 3 números asignados para el sorteo.
+            <div class="fundacion">               
+                
+                Una vez confirmado el pago, recibirás tu ticket digital con los 3 números asignados para el sorteo.
             </div>
 
             <div class="contacto">
@@ -437,7 +434,7 @@ body{
             </div>
 
             <div class="reserva">
-                <span>🎟️ Haz clic en cualquier casillero para conocer sus 3 números asignados y reservarlo</span>
+                <span>🎟️ Haz clic en cualquier puesto para conocer sus 3 números asignados y reservarlo</span>
             </div>
 
             <div id="numeros" class="numeros"></div>
@@ -587,7 +584,7 @@ fetch(URL_VENDIDOS)
 function abrirModal(boleta,opt1,opt2,opt3){
 
     document.getElementById("tituloBoleta").innerHTML =
-        "🎟️ Número de Casillero " + String(boleta).padStart(3,"0");
+        "🎟️ Número de Puesto " + String(boleta).padStart(3,"0");
 
     document.getElementById("op1").innerHTML =
         "1️⃣ " + String(opt1).padStart(3,"0");
@@ -599,8 +596,8 @@ function abrirModal(boleta,opt1,opt2,opt3){
         "3️⃣ " + String(opt3).padStart(3,"0");
 
     const mensajeWhatsapp =
-        "Hola, quiero reservar la boleta " + String(boleta).padStart(3,"0") +
-        " con los números asignados: " +
+        "Hola, quiero reservar el puesto " + String(boleta).padStart(3,"0") +
+        " que tiene números asignados: " +
         String(opt1).padStart(3,"0") + ", " +
         String(opt2).padStart(3,"0") + " y " +
         String(opt3).padStart(3,"0") + ".";
@@ -626,7 +623,7 @@ function cerrarModal(){
 function abrirModalVendido(boleta,opt1,opt2,opt3){
 
     document.getElementById("tituloVendido").innerHTML =
-        "🎟️ Número de Casillero " + String(boleta).padStart(3,"0");
+        "🎟️ Número de Puesto " + String(boleta).padStart(3,"0");
 
     document.getElementById("vendidoOp1").innerHTML =
         "1️⃣ " + String(opt1).padStart(3,"0");
@@ -691,7 +688,7 @@ function buscarNumero(){
 
         <div class="premio">
 
-            <strong>🎟️ Número de casillero:</strong>
+            <strong>🎟️ Número de Puesto:</strong>
             ${String(encontrado["# Boleta"] || encontrado["Boleta"] || encontrado["BOLETA"]).padStart(3,"0")}
 
             <br><br>
