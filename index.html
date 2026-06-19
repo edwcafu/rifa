@@ -351,6 +351,14 @@ body{
         <div class="estado-vendido">
             VENDIDA
         </div>
+            <div id="nombreParticipante"
+                style="
+                margin:10px 0;
+                font-size:20px;
+                font-weight:bold;
+                color:#333;
+             ">
+        </div>
 
         <h2 id="tituloVendido" style="color:#0d47a1;"></h2>
 
@@ -583,6 +591,8 @@ fetch(URL_VENDIDOS)
 
 function abrirModal(boleta,opt1,opt2,opt3){
 
+    document.getElementById("nombreParticipante").innerHTML =
+        "👤 PRUEBA";
     document.getElementById("tituloBoleta").innerHTML =
         "🎟️ Número de Puesto " + String(boleta).padStart(3,"0");
 
