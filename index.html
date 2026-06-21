@@ -911,23 +911,23 @@ Números asignados:
 
 Mi celular es ${celular}.`;
 
-    fetch(
+fetch(
     "https://script.google.com/macros/s/AKfycbwZoXcKyxbzoOh_1iukTE7bheK2nrC8X6xHkVoj-s1vLk7NbJIwIB0ryRAvlBzDY6fS/exec",
     {
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/json"
         },
-        body:JSON.stringify({
+        body: JSON.stringify({
             puesto: String(boletaSeleccionada).padStart(3,"0"),
             nombre: nombre,
             celular: celular,
             comentario: comentario
         })
     }
-)
-.catch(error =>
-    console.error("Error guardando reserva:", error)
+);
+
 );
 
     window.open(
