@@ -840,8 +840,25 @@ Mi celular es ${celular}.`;
         "_blank"
     );
 
+    document.getElementById("nombreReserva").value = "";
+document.getElementById("celularReserva").value = "";
+
+document.getElementById("modalReserva").style.display =
+    "none";
+
 }
-function abrirModalReserva(){
+
+
+function cerrarModalReserva(){
+
+    document.getElementById("modalReserva").style.display =
+        "none";
+
+}
+    function abrirModalReserva(){
+
+    document.getElementById("nombreReserva").value = "";
+    document.getElementById("celularReserva").value = "";
 
     document.getElementById("modalBoleta").style.display =
         "none";
@@ -850,15 +867,6 @@ function abrirModalReserva(){
         "block";
 
 }
-
-function cerrarModalReserva(){
-
-    document.getElementById("modalReserva").style.display =
-        "none";
-
-}
-    
-
 
 /* ==========================
    MODAL BOLETA VENDIDA
