@@ -392,43 +392,7 @@ body{
 
 </button>
         
-        <div id="formReserva"
-     style="display:none;margin-top:15px;">
-
-    <input
-        id="nombreReserva"
-        type="text"
-        placeholder="Nombre completo"
-        style="
-            width:100%;
-            padding:10px;
-            margin-bottom:10px;
-            border-radius:8px;
-            border:1px solid #ccc;
-        ">
-
-    <input
-        id="celularReserva"
-        type="tel"
-        placeholder="Celular"
-        style="
-            width:100%;
-            padding:10px;
-            margin-bottom:10px;
-            border-radius:8px;
-            border:1px solid #ccc;
-        ">
-
-    <button
-        onclick="enviarReservaWhatsapp()"
-        class="btn-whatsapp">
-
-        Continuar
-
-    </button>
-
-</div>
-
+        
         <br><br>
 
         <button onclick="cerrarModal()" class="btn-cerrar">
@@ -827,12 +791,7 @@ function cerrarModal(){
 
 }
 
-function mostrarFormularioReserva(){
 
-    document.getElementById("formReserva").style.display =
-        "block";
-
-}
 function enviarReservaWhatsapp(){
 
     const nombre =
@@ -896,9 +855,6 @@ function cerrarModalReserva(){
 
     document.getElementById("modalReserva").style.display =
         "none";
-
-    document.getElementById("modalBoleta").style.display =
-        "block";
 
 }
     
@@ -1035,15 +991,16 @@ function buscarNumero(){
     }
 
 }
+    window.onclick = function(event) {
 
-/* ==========================
-   CERRAR MODALES AL HACER CLIC FUERA
-========================== */
+    const modalBoleta =
+        document.getElementById("modalBoleta");
 
-window.onclick = function(event) {
+    const modalVendido =
+        document.getElementById("modalVendido");
 
-    const modalBoleta = document.getElementById("modalBoleta");
-    const modalVendido = document.getElementById("modalVendido");
+    const modalReserva =
+        document.getElementById("modalReserva");
 
     if(event.target === modalBoleta){
         cerrarModal();
@@ -1053,7 +1010,17 @@ window.onclick = function(event) {
         cerrarModalVendido();
     }
 
+    if(event.target === modalReserva){
+        cerrarModalReserva();
+    }
+
 }
+
+/* ==========================
+   CERRAR MODALES AL HACER CLIC FUERA
+========================== */
+
+
 
 </script>
 
