@@ -913,8 +913,11 @@ function cerrarModalReserva(){
 
 }
     function abrirModalReserva(){
+        document.getElementById("errorNombre").style.display =
+    "none";
 
-        
+document.getElementById("errorCelular").style.display =
+    "none";        
 
     document.getElementById("nombreReserva").value = "";
     document.getElementById("celularReserva").value = "";
