@@ -694,24 +694,26 @@ function abrirModal(boleta,opt1,opt2,opt3){
     document.getElementById("tituloBoleta").innerHTML =
         "🎟️ Número de Puesto " + String(boleta).padStart(3,"0");
 
-    document.getElementById("op1").innerHTML =
+    document.getElementById("vendidoOp1").innerHTML =
         "1️⃣ " + String(opt1).padStart(3,"0");
 
-    document.getElementById("op2").innerHTML =
+    document.getElementById("vendidoOp2").innerHTML =
         "2️⃣ " + String(opt2).padStart(3,"0");
 
-    document.getElementById("op3").innerHTML =
+    document.getElementById("vendidoOp3").innerHTML =
         "3️⃣ " + String(opt3).padStart(3,"0");
 
     const mensajeWhatsapp =
-        "Hola, quiero reservar el puesto " + String(boleta).padStart(3,"0") +
+        "Hola, quiero reservar el puesto " +
+        String(boleta).padStart(3,"0") +
         " que tiene los números asignados: " +
         String(opt1).padStart(3,"0") + ", " +
         String(opt2).padStart(3,"0") + " y " +
         String(opt3).padStart(3,"0") + ".";
 
     document.getElementById("btnWhatsapp").href =
-        "https://wa.me/573193312091?text=" + encodeURIComponent(mensajeWhatsapp);
+        "https://wa.me/573193312091?text=" +
+        encodeURIComponent(mensajeWhatsapp);
 
     document.getElementById("modalBoleta").style.display =
         "block";
