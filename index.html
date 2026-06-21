@@ -383,15 +383,15 @@ body{
 <div id="vendidoOp3" class="opcion-numero opcion-vendida"></div>
 
         <br>
-
-        <button
+<button
     id="btnWhatsapp"
     class="btn-whatsapp"
-    onclick="mostrarFormularioReserva()">
+    onclick="abrirModalReserva()">
 
     Reservar por WhatsApp
 
 </button>
+        
         <div id="formReserva"
      style="display:none;margin-top:15px;">
 
@@ -433,6 +433,59 @@ body{
 
         <button onclick="cerrarModal()" class="btn-cerrar">
             Cerrar
+        </button>
+
+    </div>
+
+</div>
+    <div id="modalReserva" class="modal">
+
+    <div class="modal-contenido">
+
+        <h2>📝 Reserva tu puesto</h2>
+
+        <br>
+
+        <input
+            id="nombreReserva"
+            type="text"
+            placeholder="Nombre completo"
+            style="
+                width:100%;
+                padding:10px;
+                margin-bottom:10px;
+                border-radius:8px;
+                border:1px solid #ccc;
+            ">
+
+        <input
+            id="celularReserva"
+            type="tel"
+            placeholder="Celular"
+            style="
+                width:100%;
+                padding:10px;
+                margin-bottom:15px;
+                border-radius:8px;
+                border:1px solid #ccc;
+            ">
+
+        <button
+            onclick="enviarReservaWhatsapp()"
+            class="btn-whatsapp">
+
+            Continuar por WhatsApp
+
+        </button>
+
+        <br><br>
+
+        <button
+            onclick="cerrarModalReserva()"
+            class="btn-cerrar">
+
+            Volver
+
         </button>
 
     </div>
@@ -829,6 +882,26 @@ Mi celular es ${celular}.`;
     );
 
 }
+function abrirModalReserva(){
+
+    document.getElementById("modalBoleta").style.display =
+        "none";
+
+    document.getElementById("modalReserva").style.display =
+        "block";
+
+}
+
+function cerrarModalReserva(){
+
+    document.getElementById("modalReserva").style.display =
+        "none";
+
+    document.getElementById("modalBoleta").style.display =
+        "block";
+
+}
+    
 
 
 /* ==========================
