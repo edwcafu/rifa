@@ -843,19 +843,37 @@ function enviarReservaWhatsapp(){
         .value
         .trim();
 
-    if(nombre === ""){
+    document.getElementById("errorNombre").style.display =
+    "none";
 
-        alert("Ingresa tu nombre");
-        return;
+document.getElementById("errorCelular").style.display =
+    "none";
 
-    }
+let hayError = false;
 
-    if(celular === ""){
+if(nombre === ""){
 
-        alert("Ingresa tu celular");
-        return;
+    document.getElementById("errorNombre").style.display =
+        "block";
 
-    }
+    hayError = true;
+
+}
+
+if(celular === ""){
+
+    document.getElementById("errorCelular").style.display =
+        "block";
+
+    hayError = true;
+
+}
+
+if(hayError){
+
+    return;
+
+}
 
     const mensaje =
 
