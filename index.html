@@ -780,7 +780,6 @@ function mostrarFormularioReserva(){
         "block";
 
 }
-
 function enviarReservaWhatsapp(){
 
     const nombre =
@@ -830,64 +829,7 @@ Mi celular es ${celular}.`;
     );
 
 }
-function enviarReservaWhatsapp(){
 
-    const nombre =
-        document.getElementById("nombreReserva")
-        .value
-        .trim();
-
-    const celular =
-        document.getElementById("celularReserva")
-        .value
-        .trim();
-
-    if(nombre === ""){
-
-        alert("Ingresa tu nombre");
-
-        return;
-    }
-
-    if(celular === ""){
-
-        alert("Ingresa tu celular");
-
-        return;
-    }
-
-    const mensaje =
-
-`Hola.
-
-Mi nombre es ${nombre}
-
-Deseo reservar el puesto ${String(boletaSeleccionada).padStart(3,"0")}
-
-Números asignados:
-
-1️⃣ ${String(opt1Seleccionado).padStart(3,"0")}
-2️⃣ ${String(opt2Seleccionado).padStart(3,"0")}
-3️⃣ ${String(opt3Seleccionado).padStart(3,"0")}
-
-Mi celular es ${celular}.`;
-
-    window.open(
-
-        "https://wa.me/573193312091?text=" +
-        encodeURIComponent(mensaje),
-
-        "_blank"
-
-    );
-
-}
-    
-    
-
-    
-
-}
 
 /* ==========================
    MODAL BOLETA VENDIDA
