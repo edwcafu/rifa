@@ -384,12 +384,50 @@ body{
 
         <br>
 
-        <a
-            id="btnWhatsapp"
-            target="_blank"
-            class="btn-whatsapp">
-            Reservar por WhatsApp
-        </a>
+        <button
+    id="btnWhatsapp"
+    class="btn-whatsapp"
+    onclick="mostrarFormularioReserva()">
+
+    Reservar por WhatsApp
+
+</button>
+        <div id="formReserva"
+     style="display:none;margin-top:15px;">
+
+    <input
+        id="nombreReserva"
+        type="text"
+        placeholder="Nombre completo"
+        style="
+            width:100%;
+            padding:10px;
+            margin-bottom:10px;
+            border-radius:8px;
+            border:1px solid #ccc;
+        ">
+
+    <input
+        id="celularReserva"
+        type="tel"
+        placeholder="Celular"
+        style="
+            width:100%;
+            padding:10px;
+            margin-bottom:10px;
+            border-radius:8px;
+            border:1px solid #ccc;
+        ">
+
+    <button
+        onclick="enviarReservaWhatsapp()"
+        class="btn-whatsapp">
+
+        Continuar
+
+    </button>
+
+</div>
 
         <br><br>
 
@@ -688,8 +726,18 @@ fetch(URL_VENDIDOS)
 /* ==========================
    MODAL BOLETA DISPONIBLE
 ========================== */
-
+let boletaSeleccionada = "";
+let opt1Seleccionado = "";
+let opt2Seleccionado = "";
+let opt3Seleccionado = "";
+    
 function abrirModal(boleta,opt1,opt2,opt3){
+
+boletaSeleccionada = boleta;
+
+opt1Seleccionado = opt1;
+opt2Seleccionado = opt2;
+opt3Seleccionado = opt3;
 
     document.getElementById("tituloBoleta").innerHTML =
         "🎟️ Número de Puesto " + String(boleta).padStart(3,"0");
@@ -720,6 +768,67 @@ function abrirModal(boleta,opt1,opt2,opt3){
 }
 
 function cerrarModal(){
+
+    function mostrarFormularioReserva(){
+
+    document.getElementById("formReserva").style.display =
+        "block";
+
+}
+function enviarReservaWhatsapp(){
+
+    const nombre =
+        document.getElementById("nombreReserva")
+        .value
+        .trim();
+
+    const celular =
+        document.getElementById("celularReserva")
+        .value
+        .trim();
+
+    if(nombre === ""){
+
+        alert("Ingresa tu nombre");
+
+        return;
+    }
+
+    if(celular === ""){
+
+        alert("Ingresa tu celular");
+
+        return;
+    }
+
+    const mensaje =
+
+`Hola.
+
+Mi nombre es ${nombre}
+
+Deseo reservar el puesto ${String(boletaSeleccionada).padStart(3,"0")}
+
+Números asignados:
+
+1️⃣ ${String(opt1Seleccionado).padStart(3,"0")}
+2️⃣ ${String(opt2Seleccionado).padStart(3,"0")}
+3️⃣ ${String(opt3Seleccionado).padStart(3,"0")}
+
+Mi celular es ${celular}.`;
+
+    window.open(
+
+        "https://wa.me/573193312091?text=" +
+        encodeURIComponent(mensaje),
+
+        "_blank"
+
+    );
+
+}
+    
+    
 
     document.getElementById("modalBoleta").style.display =
         "none";
