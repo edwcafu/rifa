@@ -858,6 +858,11 @@ function enviarReservaWhatsapp(){
         .value
         .trim();
 
+    const comentario =
+    document.getElementById("comentarioReserva")
+    .value
+    .trim();
+
     document.getElementById("errorNombre").style.display =
     "none";
 
@@ -905,6 +910,25 @@ Números asignados:
 3️⃣ ${String(opt3Seleccionado).padStart(3,"0")}
 
 Mi celular es ${celular}.`;
+
+    fetch(
+    "https://script.google.com/macros/s/AKfycbwZoXcKyxbzoOh_1iukTE7bheK2nrC8X6xHkVoj-s1vLk7NbJIwIB0ryRAvlBzDY6fS/exec",
+    {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            puesto: String(boletaSeleccionada).padStart(3,"0"),
+            nombre: nombre,
+            celular: celular,
+            comentario: comentario
+        })
+    }
+)
+.catch(error =>
+    console.error("Error guardando reserva:", error)
+);
 
     window.open(
         "https://wa.me/573193312091?text=" +
