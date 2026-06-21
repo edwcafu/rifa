@@ -911,22 +911,14 @@ Números asignados:
 
 Mi celular es ${celular}.`;
 
-fetch(
-    "https://script.google.com/macros/s/AKfycbwZoXcKyxbzoOh_1iukTE7bheK2nrC8X6xHkVoj-s1vLk7NbJIwIB0ryRAvlBzDY6fS/exec",
-    {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            puesto: String(boletaSeleccionada).padStart(3,"0"),
-            nombre: nombre,
-            celular: celular,
-            comentario: comentario
-        })
-    }
-);
+const url =
+"https://script.google.com/macros/s/AKfycbwZoXcKyxbzoOh_1iukTE7bheK2nrC8X6xHkVoj-s1vLk7NbJIwIB0ryRAvlBzDY6fS/exec" +
+"?puesto=" + encodeURIComponent(String(boletaSeleccionada).padStart(3,"0")) +
+"&nombre=" + encodeURIComponent(nombre) +
+"&celular=" + encodeURIComponent(celular) +
+"&comentario=" + encodeURIComponent(comentario);
+
+new Image().src = url;
 
 
 
