@@ -411,6 +411,14 @@ body{
     <div class="modal-contenido">
 
         <h2>📝 Reserva tu puesto</h2>
+        <div id="puestoReserva"
+     style="
+        font-size:24px;
+        font-weight:bold;
+        color:#0d47a1;
+        margin:15px 0 20px 0;
+     ">
+</div>
 
         <br>
 
@@ -861,8 +869,14 @@ function cerrarModalReserva(){
 }
     function abrirModalReserva(){
 
+        
+
     document.getElementById("nombreReserva").value = "";
     document.getElementById("celularReserva").value = "";
+
+     document.getElementById("puestoReserva").innerHTML =
+        "🎟️ Puesto " +
+        String(boletaSeleccionada).padStart(3,"0");    
 
     document.getElementById("modalBoleta").style.display =
         "none";
