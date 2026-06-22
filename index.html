@@ -918,15 +918,27 @@ const url =
 "&celular=" + encodeURIComponent(celular) +
 "&comentario=" + encodeURIComponent(comentario);
 
-new Image().src = url;
-
-
+fetch(url)
+.then(() => {
 
     window.open(
         "https://wa.me/573193312091?text=" +
         encodeURIComponent(mensaje),
         "_blank"
     );
+
+})
+.catch(error => {
+
+    console.error(error);
+
+    window.open(
+        "https://wa.me/573193312091?text=" +
+        encodeURIComponent(mensaje),
+        "_blank"
+    );
+
+});
 
     document.getElementById("nombreReserva").value = "";
 document.getElementById("celularReserva").value = "";
