@@ -918,27 +918,18 @@ const url =
 "&celular=" + encodeURIComponent(celular) +
 "&comentario=" + encodeURIComponent(comentario);
 
-fetch(url)
-.then(() => {
-
-    window.open(
-        "https://wa.me/573193312091?text=" +
-        encodeURIComponent(mensaje),
-        "_blank"
-    );
-
-})
-.catch(error => {
-
-    console.error(error);
-
-    window.open(
-        "https://wa.me/573193312091?text=" +
-        encodeURIComponent(mensaje),
-        "_blank"
-    );
-
+fetch(url, {
+    method: "GET",
+    mode: "no-cors"
 });
+
+setTimeout(() => {
+
+    window.location.href =
+        "https://wa.me/573193312091?text=" +
+        encodeURIComponent(mensaje);
+
+}, 800);
 
     document.getElementById("nombreReserva").value = "";
 document.getElementById("celularReserva").value = "";
