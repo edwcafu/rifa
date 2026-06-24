@@ -711,7 +711,7 @@ fetch(URL_VENDIDOS)
     
     vendidosData =data;
     const vendidos = data
-        .map(fila => Number(Object.values(fila)[0]))
+        .map(fila => Number(fila["# Boleta"]))
         .filter(n => !isNaN(n));
 
     for(let i = 1; i <= 334; i++){
@@ -753,9 +753,9 @@ fetch(URL_VENDIDOS)
 
             if(div.classList.contains("vendido")){
 
-    const venta = vendidosData.find(f =>
-        Number(Object.values(f)[0]) === i
-    );
+const venta = vendidosData.find(f =>
+    Number(f["# Boleta"]) === i
+);
 
     const participante =
         venta?.["Participantes"] || "Sin nombre";
@@ -1106,9 +1106,9 @@ function buscarNumero(){
 
         vendidosData = data;
 
-        const vendidos = data
-            .map(fila => Number(Object.values(fila)[0]))
-            .filter(n => !isNaN(n));
+const vendidos = data
+    .map(fila => Number(fila["# Boleta"]))
+    .filter(n => !isNaN(n));
 
         document.querySelectorAll(".numero").forEach(div => {
 
