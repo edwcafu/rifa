@@ -920,6 +920,15 @@ fetch(url, {
     method: "GET",
     mode: "no-cors"
 });
+    document.querySelectorAll(".numero").forEach(div => {
+
+    if(div.textContent === String(boletaSeleccionada).padStart(3,"0")){
+
+        div.classList.add("vendido");
+
+    }
+
+});
 
 setTimeout(() => {
 
