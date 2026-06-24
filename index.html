@@ -1098,6 +1098,36 @@ function buscarNumero(){
     }
 
 }
+    setInterval(() => {
+
+    fetch(URL_VENDIDOS)
+    .then(res => res.json())
+    .then(data => {
+
+        vendidosData = data;
+
+        const vendidos = data
+            .map(fila => Number(Object.values(fila)[0]))
+            .filter(n => !isNaN(n));
+
+        document.querySelectorAll(".numero").forEach(div => {
+
+            const numero = Number(div.textContent);
+
+            if(vendidos.includes(numero)){
+                div.classList.add("vendido");
+            }
+
+        });
+
+    })
+    .catch(error => {
+
+        console.error("Error actualizando vendidos:", error);
+
+    });
+
+}, 3000);
     window.onclick = function(event) {
 
     const modalBoleta =
