@@ -1105,12 +1105,12 @@ function buscarNumero(){
     .then(data => {
 
         vendidosData = data;
-        console.log("Actualizando...", vendidos.length);
+        
 
 const vendidos = data
     .map(fila => Number(fila["# Boleta"]))
     .filter(n => !isNaN(n));
-
+        console.log("Actualizando...", vendidos.length);
         document.querySelectorAll(".numero").forEach(div => {
 
             const numero = Number(div.textContent);
