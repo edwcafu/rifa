@@ -1105,6 +1105,7 @@ function buscarNumero(){
     .then(data => {
 
         vendidosData = data;
+        console.log("Actualizando...", vendidos.length);
 
 const vendidos = data
     .map(fila => Number(fila["# Boleta"]))
